@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCRM.Adapters.Email.Imap.Tests", "DotNetCRM.Adapters.Email.Imap.Tests\DotNetCRM.Adapters.Email.Imap.Tests.csproj", "{437755CC-A65D-4E05-AC3C-57C0F4A41F13}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCRM.Adapters.Email.Imap", "DotNetCRM.Adapters.Email.Imap\DotNetCRM.Adapters.Email.Imap.csproj", "{F110A396-ECFB-412E-8021-729BE93FD941}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCRM.Core", "DotNetCRM.Core\DotNetCRM.Core.csproj", "{76128364-FE0B-447D-868D-3C223336DFC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "adapters", "adapters", "{E46619D6-4C36-47FB-B8C6-C0592D783755}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{437755CC-A65D-4E05-AC3C-57C0F4A41F13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{437755CC-A65D-4E05-AC3C-57C0F4A41F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{437755CC-A65D-4E05-AC3C-57C0F4A41F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{437755CC-A65D-4E05-AC3C-57C0F4A41F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F110A396-ECFB-412E-8021-729BE93FD941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F110A396-ECFB-412E-8021-729BE93FD941}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F110A396-ECFB-412E-8021-729BE93FD941}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F110A396-ECFB-412E-8021-729BE93FD941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76128364-FE0B-447D-868D-3C223336DFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76128364-FE0B-447D-868D-3C223336DFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76128364-FE0B-447D-868D-3C223336DFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76128364-FE0B-447D-868D-3C223336DFC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{437755CC-A65D-4E05-AC3C-57C0F4A41F13} = {E46619D6-4C36-47FB-B8C6-C0592D783755}
+		{F110A396-ECFB-412E-8021-729BE93FD941} = {E46619D6-4C36-47FB-B8C6-C0592D783755}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D763DAF-68BA-4612-9AF6-4E9E7B980BB9}
+	EndGlobalSection
+EndGlobal
