@@ -1,6 +1,4 @@
 using AutoFixture;
-using DotNet.Testcontainers.Builders;
-using DotNet.Testcontainers.Containers;
 using DotNetCRM.Core.Models;
 using DotNetCRM.Core.Ports.Driven;
 using FluentAssertions;
@@ -15,7 +13,7 @@ namespace DotNetCRM.Adapters.Email.Imap.Tests
         private ImapEmailFetcher _sut = null!;
         private Mock<IMailboxSettingsProvider> _mailboxSettingsProviderMock = null!;
         private Mock<ILogger<ImapEmailFetcher>> _loggerMock = null!;
-        private IContainer _greenMailContainer = null!;
+        private MailServerContainer _mailServer = null!;
 
         public async Task InitializeAsync()
         {
@@ -28,17 +26,12 @@ namespace DotNetCRM.Adapters.Email.Imap.Tests
                 _mailboxSettingsProviderMock.Object,
                 _loggerMock.Object);
 
-            _greenMailContainer = new ContainerBuilder()
-                .WithDockerEndpoint("tcp://localhost:2375")
-                .WithImage("greenmail/standalone:latest")
-                .WithPortBinding(3025, 3143)
-                .Build();
-            await _greenMailContainer.StartAsync();
+            _mailServer = await MailServerContainer.StartNewAsync();
         }
 
         public async Task DisposeAsync()
         {
-            await _greenMailContainer.StopAsync();
+            await _mailServer.DisposeAsync();
         }
 
         [Fact]
@@ -49,18 +42,18 @@ namespace DotNetCRM.Adapters.Email.Imap.Tests
 
             _fixture.Customize<ImapSettings>(x => x
                 .FromFactory(() => new ImapSettings(
-                    _greenMailContainer.Hostname,
-                    3025,
+                    _mailServer.Hostname,
+                    _mailServer.ImapPort,
                     true,
                     "user",
                     "password")));
 
             _mailboxSettingsProviderMock
                 .Setup(x => x.FindSettingsForMailboxAsync(
-                    It.Is(mailboxId, MailboxId.EqualityComparer),
+                    It.Is<MailboxId>(id => id == mailboxId),
                     It.IsAny<CancellationToken>()))
                 .ReturnsAsync(_fixture.Create<MailboxSettings>());
-
+            
             // WHEN
             var results = await _sut.GetUnreadEmailsAsync(mailboxId, CancellationToken.None);
 

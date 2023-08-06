@@ -50,6 +50,7 @@ public class ImapEmailFetcher : IEmailFetcher
         var imapSettings = config.ImapSettings;
         using var client = new ImapClient();
 
+        await Task.Delay(TimeSpan.FromSeconds(5), ct);
         try
         {
             await client.ConnectAsync(imapSettings.Host, imapSettings.Port, SecureSocketOptions.Auto, ct);
@@ -73,6 +74,10 @@ public class ImapEmailFetcher : IEmailFetcher
         catch (MailKit.ServiceNotAuthenticatedException e)
         {
             throw new ServiceNotAuthenticatedException(e.Message);
+        }
+        catch (Exception e)
+        {
+            throw;
         }
     }
 }
